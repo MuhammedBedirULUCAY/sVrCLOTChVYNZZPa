@@ -33,15 +33,28 @@ def extractTweetInformation(tweet):
 # Data frame columns
 columns = ["UserName", "Date", "TweetContent", "#ofComment " ,"#ofRetweet", "#ofLikes"]
 df = pd.DataFrame(columns=columns)
-
 # Using browser and URL adress to pull tweets
 driver = webdriver.Chrome(ChromeDriverManager().install())
-URL = "https://twitter.com/search?q=%22request%20for%20startup%22&f=live"
-driver.get(URL)
+
+
+sentence = input("Enter the sentence for search : ").replace(" ","%20")
+url = "https://twitter.com/search?q=" + sentence
+
+print(f"1->Populer")
+print(f"!1->Latest")
+option = int(input("Choose the option : "))
+
+if (option != 1):
+    url = url + "&f=live"
+
+driver.get(url)
+
+# wating for the page to load
+print("Waiting for the page to load")
 sleep(3)
 
 # If you want to load older tweet increase the scroll number 
-scrollNumber = 10
+scrollNumber = int(input("How many tweets rolled want to load? (Each roll has nearly 22 tweets) : "))
 sCounter = 0
 while sCounter < scrollNumber:
     
