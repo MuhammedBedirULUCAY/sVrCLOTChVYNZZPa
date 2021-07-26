@@ -12,4 +12,4 @@
     $python .\tweetFinder.py
 
 ![img1](./img1.png)
-![img1](./img2.png)
+![img1](./img2.PNG)
